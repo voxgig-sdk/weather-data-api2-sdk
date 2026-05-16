@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "weather": {
+      "WEATHER00": {
+        "description": "s28",
+        "icon": "s29",
+        "id": "WEATHER00",
+        "main": "s2b"
+      },
+      "WEATHER01": {
+        "description": "s50",
+        "icon": "s51",
+        "id": "WEATHER01",
+        "main": "s53"
+      },
+      "WEATHER02": {
+        "description": "s78",
+        "icon": "s79",
+        "id": "WEATHER02",
+        "main": "s7b"
+      }
+    }
+  },
+  "new": {
+    "weather": {
+      "weather_ref01": {
+        "description": "sa0",
+        "icon": "sa1",
+        "main": "sa3"
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+-- ProjectName SDK configuration
+
+local function make_config()
+  return {
+    main = {
+      name = "WeatherDataApi2",
+    },
+    feature = {
+      ["test"] = {
+        ["options"] = {
+          ["active"] = false,
+        },
+      },
+    },
+    options = {
+      base = "https://api.openweathermap.org/data/2.5",
+      auth = {
+        prefix = "Bearer",
+      },
+      headers = {
+        ["content-type"] = "application/json",
+      },
+      entity = {
+        ["weather"] = {},
+      },
+    },
+    entity = {
+      ["weather"] = {
+        ["fields"] = {
+          {
+            ["name"] = "description",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 0,
+          },
+          {
+            ["name"] = "icon",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 1,
+          },
+          {
+            ["name"] = "id",
+            ["req"] = false,
+            ["type"] = "`$INTEGER`",
+            ["active"] = true,
+            ["index$"] = 2,
+          },
+          {
+            ["name"] = "main",
+            ["req"] = false,
+            ["type"] = "`$STRING`",
+            ["active"] = true,
+            ["index$"] = 3,
+          },
+        },
+        ["name"] = "weather",
+        ["op"] = {
+          ["list"] = {
+            ["name"] = "list",
+            ["points"] = {
+              {
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["kind"] = "query",
+                      ["name"] = "appid",
+                      ["orig"] = "appid",
+                      ["reqd"] = true,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = 2643743,
+                      ["kind"] = "query",
+                      ["name"] = "id",
+                      ["orig"] = "id",
+                      ["reqd"] = false,
+                      ["type"] = "`$INTEGER`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = "en",
+                      ["kind"] = "query",
+                      ["name"] = "lang",
+                      ["orig"] = "lang",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = 51.5074,
+                      ["kind"] = "query",
+                      ["name"] = "lat",
+                      ["orig"] = "lat",
+                      ["reqd"] = false,
+                      ["type"] = "`$NUMBER`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = -0.1278,
+                      ["kind"] = "query",
+                      ["name"] = "lon",
+                      ["orig"] = "lon",
+                      ["reqd"] = false,
+                      ["type"] = "`$NUMBER`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = "json",
+                      ["kind"] = "query",
+                      ["name"] = "mode",
+                      ["orig"] = "mode",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = "London,uk",
+                      ["kind"] = "query",
+                      ["name"] = "q",
+                      ["orig"] = "q",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = "standard",
+                      ["kind"] = "query",
+                      ["name"] = "unit",
+                      ["orig"] = "unit",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                    {
+                      ["example"] = "94040,us",
+                      ["kind"] = "query",
+                      ["name"] = "zip",
+                      ["orig"] = "zip",
+                      ["reqd"] = false,
+                      ["type"] = "`$STRING`",
+                      ["active"] = true,
+                    },
+                  },
+                },
+                ["method"] = "GET",
+                ["orig"] = "/weather",
+                ["parts"] = {
+                  "weather",
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "appid",
+                    "id",
+                    "lang",
+                    "lat",
+                    "lon",
+                    "mode",
+                    "q",
+                    "unit",
+                    "zip",
+                  },
+                },
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["active"] = true,
+                ["index$"] = 0,
+              },
+            },
+            ["input"] = "data",
+            ["key$"] = "list",
+          },
+        },
+        ["relations"] = {
+          ["ancestors"] = {},
+        },
+      },
+    },
+  }
+end
+
+
+local function make_feature(name)
+  local features = require("features")
+  local factory = features[name]
+  if factory ~= nil then
+    return factory()
+  end
+  return features.base()
+end
+
+
+-- Attach make_feature to the SDK class
+local function setup_sdk(SDK)
+  SDK._make_feature = make_feature
+end
+
+
+return make_config

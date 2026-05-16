@@ -1,0 +1,145 @@
+# Entity: weather
+
+main: kit: entity: weather: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "icon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "main"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "weather"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "appid"
+                orig: "appid"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: 2643743
+                kind: "query"
+                name: "id"
+                orig: "id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "en"
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 51.5074
+                kind: "query"
+                name: "lat"
+                orig: "lat"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: -0.1278
+                kind: "query"
+                name: "lon"
+                orig: "lon"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: "json"
+                kind: "query"
+                name: "mode"
+                orig: "mode"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "London,uk"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "standard"
+                kind: "query"
+                name: "unit"
+                orig: "unit"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "94040,us"
+                kind: "query"
+                name: "zip"
+                orig: "zip"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/weather"
+          parts: [
+            "weather"
+          ]
+          select: {
+            exist: [
+              "appid"
+              "id"
+              "lang"
+              "lat"
+              "lon"
+              "mode"
+              "q"
+              "unit"
+              "zip"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

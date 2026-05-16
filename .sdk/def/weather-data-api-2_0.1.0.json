@@ -1,0 +1,382 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Weather Data API",
+    "description": "This API provides weather data, including current conditions, forecasts, and historical weather information. It allows users to access weather information for various locations worldwide.",
+    "version": "2.5.0",
+    "contact": {
+      "name": "Weather Data API",
+      "url": "https://api.openweathermap.org"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.openweathermap.org/data/2.5",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/weather": {
+      "get": {
+        "summary": "Get current weather data",
+        "description": "Returns current weather data for a specified location. You can search by city name, city ID, geographic coordinates, or ZIP code.",
+        "operationId": "getCurrentWeather",
+        "tags": [
+          "Current Weather"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "City name, state code (US only), and country code divided by comma. Use ISO 3166 country codes.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "London,uk"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "City ID. List of city IDs can be downloaded from OpenWeatherMap.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 2643743
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude of the location",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "example": 51.5074
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude of the location",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "example": -0.1278
+          },
+          {
+            "name": "zip",
+            "in": "query",
+            "description": "Zip code and country code divided by comma",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "94040,us"
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "description": "Units of measurement. standard (Kelvin), metric (Celsius), or imperial (Fahrenheit)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "standard",
+                "metric",
+                "imperial"
+              ],
+              "default": "standard"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language code for the output. See API documentation for available languages.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "en"
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "description": "Response format. json or xml",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ],
+              "default": "json"
+            }
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with current weather data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key"
+          },
+          "404": {
+            "description": "Not found - City not found"
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeatherResponse": {
+        "type": "object",
+        "properties": {
+          "coord": {
+            "type": "object",
+            "properties": {
+              "lon": {
+                "type": "number",
+                "format": "float",
+                "description": "Longitude of the location"
+              },
+              "lat": {
+                "type": "number",
+                "format": "float",
+                "description": "Latitude of the location"
+              }
+            }
+          },
+          "weather": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "Weather condition id"
+                },
+                "main": {
+                  "type": "string",
+                  "description": "Group of weather parameters (Rain, Snow, Extreme etc.)"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Weather condition within the group"
+                },
+                "icon": {
+                  "type": "string",
+                  "description": "Weather icon id"
+                }
+              }
+            }
+          },
+          "base": {
+            "type": "string",
+            "description": "Internal parameter"
+          },
+          "main": {
+            "type": "object",
+            "properties": {
+              "temp": {
+                "type": "number",
+                "format": "float",
+                "description": "Temperature"
+              },
+              "feels_like": {
+                "type": "number",
+                "format": "float",
+                "description": "Temperature accounting for human perception"
+              },
+              "temp_min": {
+                "type": "number",
+                "format": "float",
+                "description": "Minimum temperature at the moment"
+              },
+              "temp_max": {
+                "type": "number",
+                "format": "float",
+                "description": "Maximum temperature at the moment"
+              },
+              "pressure": {
+                "type": "integer",
+                "description": "Atmospheric pressure on the sea level, hPa"
+              },
+              "humidity": {
+                "type": "integer",
+                "description": "Humidity percentage"
+              },
+              "sea_level": {
+                "type": "integer",
+                "description": "Atmospheric pressure on the sea level, hPa"
+              },
+              "grnd_level": {
+                "type": "integer",
+                "description": "Atmospheric pressure on the ground level, hPa"
+              }
+            }
+          },
+          "visibility": {
+            "type": "integer",
+            "description": "Visibility in meters, maximum 10km"
+          },
+          "wind": {
+            "type": "object",
+            "properties": {
+              "speed": {
+                "type": "number",
+                "format": "float",
+                "description": "Wind speed"
+              },
+              "deg": {
+                "type": "integer",
+                "description": "Wind direction in degrees"
+              },
+              "gust": {
+                "type": "number",
+                "format": "float",
+                "description": "Wind gust"
+              }
+            }
+          },
+          "clouds": {
+            "type": "object",
+            "properties": {
+              "all": {
+                "type": "integer",
+                "description": "Cloudiness percentage"
+              }
+            }
+          },
+          "rain": {
+            "type": "object",
+            "properties": {
+              "1h": {
+                "type": "number",
+                "format": "float",
+                "description": "Rain volume for the last 1 hour, mm"
+              },
+              "3h": {
+                "type": "number",
+                "format": "float",
+                "description": "Rain volume for the last 3 hours, mm"
+              }
+            }
+          },
+          "snow": {
+            "type": "object",
+            "properties": {
+              "1h": {
+                "type": "number",
+                "format": "float",
+                "description": "Snow volume for the last 1 hour, mm"
+              },
+              "3h": {
+                "type": "number",
+                "format": "float",
+                "description": "Snow volume for the last 3 hours, mm"
+              }
+            }
+          },
+          "dt": {
+            "type": "integer",
+            "description": "Time of data calculation, unix UTC"
+          },
+          "sys": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "integer",
+                "description": "Internal parameter"
+              },
+              "id": {
+                "type": "integer",
+                "description": "Internal parameter"
+              },
+              "country": {
+                "type": "string",
+                "description": "Country code (ISO 3166)"
+              },
+              "sunrise": {
+                "type": "integer",
+                "description": "Sunrise time, unix UTC"
+              },
+              "sunset": {
+                "type": "integer",
+                "description": "Sunset time, unix UTC"
+              }
+            }
+          },
+          "timezone": {
+            "type": "integer",
+            "description": "Shift in seconds from UTC"
+          },
+          "id": {
+            "type": "integer",
+            "description": "City ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "City name"
+          },
+          "cod": {
+            "type": "integer",
+            "description": "Internal parameter"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "appid",
+        "description": "API key required for authentication. Obtain from OpenWeatherMap."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Current Weather",
+      "description": "Access current weather data for any location"
+    }
+  ]
+}
