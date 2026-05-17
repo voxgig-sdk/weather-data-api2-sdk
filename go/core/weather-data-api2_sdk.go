@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/weather-data-api2-sdk/go/utility/struct"
 )
 
 type WeatherDataApi2SDK struct {
