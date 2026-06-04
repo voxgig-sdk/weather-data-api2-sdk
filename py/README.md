@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from weatherdataapi2_sdk import WeatherDataApi2SDK
 
-client = WeatherDataApi2SDK({
-    "apikey": os.environ.get("WEATHER-DATA-API2_APIKEY"),
-})
+client = WeatherDataApi2SDK({})
 ```
 
 ### 2. List weathers
@@ -121,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 WEATHER-DATA-API2_TEST_LIVE=TRUE
-WEATHER-DATA-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

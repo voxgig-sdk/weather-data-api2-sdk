@@ -92,7 +92,6 @@ def _weather_basic_setup(extra):
         "WEATHERDATAAPI__TEST_WEATHER_ENTID": idmap,
         "WEATHERDATAAPI__TEST_LIVE": "FALSE",
         "WEATHERDATAAPI__TEST_EXPLAIN": "FALSE",
-        "WEATHERDATAAPI__APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _weather_basic_setup(extra):
     if env.get("WEATHERDATAAPI__TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WEATHERDATAAPI__APIKEY"),
             },
             extra or {},
         ])

@@ -17,8 +17,31 @@ main: {
       ]
       title: "Weather Data API"
       version: "2.5.0"
+      tagline: "Fetch current conditions and forecasts from OpenWeatherMap's classic /data/2.5 weather endpoints"
+      homepage: "https://openweathermap.org/"
+      docs_url: "https://openweathermap.org/api"
+      license_short: "Commercial terms; free tier requires an API key (appid)."
+      license_md: `- Operated by [OpenWeather Ltd.](https://openweathermap.org/) under their commercial Terms of Service.
+- A personal API key (\`appid\`) is required on every request; sign up at [home.openweathermap.org](https://home.openweathermap.org/users/sign_up).
+- Tiered subscription plans gate call volume, history depth, and update frequency; a free tier is available.
+- Attribution to OpenWeather is expected when redistributing data.`
+      about_md: `[OpenWeatherMap](https://openweathermap.org/) is a weather data service from OpenWeather Ltd. that aggregates observations from global and local weather models, satellites, radars, and a wide network of weather stations. This SDK targets the long-standing \`https://api.openweathermap.org/data/2.5\` endpoints, which expose current weather, forecasts, and related lookups in JSON.
+
+What you get from the API:
+
+- Current conditions for any location by coordinates, including temperature, \`feels_like\`, pressure, humidity, wind speed and direction, cloud cover, visibility, and (when present) rain/snow volume.
+- Weather condition codes with short descriptions (e.g. "clear sky", "light rain") and localised text via the \`lang\` parameter.
+- System data such as country code, sunrise/sunset times, and the Unix timestamp of the measurement.
+
+Operational notes:
+
+- Every request requires an \`appid\` query parameter carrying your OpenWeather API key.
+- Locations are specified by \`lat\`/\`lon\`; results can be returned in \`standard\` (Kelvin), \`metric\` (Celsius), or \`imperial\` (Fahrenheit) units via the \`units\` parameter.
+- Response format defaults to JSON; XML and HTML are available via the \`mode\` parameter.`
+      entity_desc: {
+        weather: "Current weather observations for a geographic point, served from `/data/2.5/weather` and keyed by `lat`/`lon` plus your `appid`."
+      }
+      auth: false
     }
   }
-}
-
 }

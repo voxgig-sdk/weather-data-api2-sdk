@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { WeatherDataApi2SDK } from 'weather-data-api2'
 
-const client = new WeatherDataApi2SDK({
-  apikey: process.env.WEATHER-DATA-API2_APIKEY,
-})
+const client = new WeatherDataApi2SDK({})
 ```
 
 ### 2. List weathers
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new WeatherDataApi2SDK({ apikey: '...' })
+const client = new WeatherDataApi2SDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new WeatherDataApi2SDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 WEATHER-DATA-API2_TEST_LIVE=TRUE
-WEATHER-DATA-API2_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new WeatherDataApi2SDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new WeatherDataApi2SDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
