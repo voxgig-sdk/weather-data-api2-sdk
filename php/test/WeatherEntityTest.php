@@ -86,6 +86,7 @@ function weather_basic_setup($extra)
         "WEATHERDATAAPI__TEST_WEATHER_ENTID" => $idmap,
         "WEATHERDATAAPI__TEST_LIVE" => "FALSE",
         "WEATHERDATAAPI__TEST_EXPLAIN" => "FALSE",
+        "WEATHERDATAAPI__APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function weather_basic_setup($extra)
     if ($env["WEATHERDATAAPI__TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["WEATHERDATAAPI__APIKEY"],
             ],
             $extra ?? [],
         ]);

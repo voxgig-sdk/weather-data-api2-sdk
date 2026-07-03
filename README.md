@@ -1,24 +1,8 @@
 # WeatherDataApi2 SDK
 
-Fetch current conditions and forecasts from OpenWeatherMap's classic /data/2.5 weather endpoints
+Weather Data API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Weather Data API
-
-[OpenWeatherMap](https://openweathermap.org/) is a weather data service from OpenWeather Ltd. that aggregates observations from global and local weather models, satellites, radars, and a wide network of weather stations. This SDK targets the long-standing `https://api.openweathermap.org/data/2.5` endpoints, which expose current weather, forecasts, and related lookups in JSON.
-
-What you get from the API:
-
-- Current conditions for any location by coordinates, including temperature, `feels_like`, pressure, humidity, wind speed and direction, cloud cover, visibility, and (when present) rain/snow volume.
-- Weather condition codes with short descriptions (e.g. "clear sky", "light rain") and localised text via the `lang` parameter.
-- System data such as country code, sunrise/sunset times, and the Unix timestamp of the measurement.
-
-Operational notes:
-
-- Every request requires an `appid` query parameter carrying your OpenWeather API key.
-- Locations are specified by `lat`/`lon`; results can be returned in `standard` (Kelvin), `metric` (Celsius), or `imperial` (Fahrenheit) units via the `units` parameter.
-- Response format defaults to JSON; XML and HTML are available via the `mode` parameter.
 
 ## Try it
 
@@ -52,29 +36,31 @@ gem install weather-data-api2-sdk
 luarocks install weather-data-api2-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { WeatherDataApi2SDK } from 'weather-data-api2'
 
-const client = new WeatherDataApi2SDK({})
+const client = new WeatherDataApi2SDK({
+  apikey: process.env.WEATHER-DATA-API2_APIKEY,
+})
 
 // List all weathers
 const weathers = await client.Weather().list()
+console.log(weathers.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -104,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Weather** | Current weather observations for a geographic point, served from `/data/2.5/weather` and keyed by `lat`/`lon` plus your `appid`. | `/weather` |
+| **Weather** |  | `/weather` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -114,12 +100,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from weatherdataapi2_sdk import WeatherDataApi2SDK
 
-client = WeatherDataApi2SDK({})
+client = WeatherDataApi2SDK({
+    "apikey": os.environ.get("WEATHER-DATA-API2_APIKEY"),
+})
 
 # List all weathers
-weathers, err = client.Weather(None).list(None, None)
+weathers, err = client.Weather().list()
+print(weathers)
 ```
 
 ### PHP
@@ -128,10 +118,13 @@ weathers, err = client.Weather(None).list(None, None)
 <?php
 require_once 'weatherdataapi2_sdk.php';
 
-$client = new WeatherDataApi2SDK([]);
+$client = new WeatherDataApi2SDK([
+    "apikey" => getenv("WEATHER-DATA-API2_APIKEY"),
+]);
 
 // List all weathers
-[$weathers, $err] = $client->Weather(null)->list(null, null);
+[$weathers, $err] = $client->Weather()->list();
+print_r($weathers);
 ```
 
 ### Golang
@@ -139,10 +132,13 @@ $client = new WeatherDataApi2SDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/weather-data-api2-sdk/go"
 
-client := sdk.NewWeatherDataApi2SDK(map[string]any{})
+client := sdk.NewWeatherDataApi2SDK(map[string]any{
+    "apikey": os.Getenv("WEATHER-DATA-API2_APIKEY"),
+})
 
 // List all weathers
 weathers, err := client.Weather(nil).List(nil, nil)
+fmt.Println(weathers)
 ```
 
 ### Ruby
@@ -150,10 +146,13 @@ weathers, err := client.Weather(nil).List(nil, nil)
 ```ruby
 require_relative "WeatherDataApi2_sdk"
 
-client = WeatherDataApi2SDK.new({})
+client = WeatherDataApi2SDK.new({
+  "apikey" => ENV["WEATHER-DATA-API2_APIKEY"],
+})
 
 # List all weathers
-weathers, err = client.Weather(nil).list(nil, nil)
+weathers, err = client.Weather().list
+puts weathers
 ```
 
 ### Lua
@@ -161,10 +160,13 @@ weathers, err = client.Weather(nil).list(nil, nil)
 ```lua
 local sdk = require("weather-data-api2_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("WEATHER-DATA-API2_APIKEY"),
+})
 
 -- List all weathers
-local weathers, err = client:Weather(nil):list(nil, nil)
+local weathers, err = client:Weather():list()
+print(weathers)
 ```
 
 ## Unit testing in offline mode
@@ -183,25 +185,21 @@ const result = await client.Weather().load({ id: 'test01' })
 ### Python
 
 ```python
-client = WeatherDataApi2SDK.test(None, None)
-result, err = client.Weather(None).load(
-    {"id": "test01"}, None
-)
+client = WeatherDataApi2SDK.test()
+result, err = client.Weather().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = WeatherDataApi2SDK::test(null, null);
-[$result, $err] = $client->Weather(null)->load(
-    ["id" => "test01"], null
-);
+$client = WeatherDataApi2SDK::test();
+[$result, $err] = $client->Weather()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Weather(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -210,19 +208,15 @@ result, err := client.Weather(nil).Load(
 ### Ruby
 
 ```ruby
-client = WeatherDataApi2SDK.test(nil, nil)
-result, err = client.Weather(nil).load(
-  { "id" => "test01" }, nil
-)
+client = WeatherDataApi2SDK.test
+result, err = client.Weather().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Weather(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Weather():load({ id = "test01" })
 ```
 
 ## How it works
@@ -326,16 +320,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Weather Data API
-
-- Upstream: [https://openweathermap.org/](https://openweathermap.org/)
-- API docs: [https://openweathermap.org/api](https://openweathermap.org/api)
-
-- Operated by [OpenWeather Ltd.](https://openweathermap.org/) under their commercial Terms of Service.
-- A personal API key (`appid`) is required on every request; sign up at [home.openweathermap.org](https://home.openweathermap.org/users/sign_up).
-- Tiered subscription plans gate call volume, history depth, and update frequency; a free tier is available.
-- Attribution to OpenWeather is expected when redistributing data.
 
 ---
 
