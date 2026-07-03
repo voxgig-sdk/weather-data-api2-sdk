@@ -10,7 +10,7 @@ The TypeScript SDK for the WeatherDataApi2 API — a type-safe, entity-oriented 
 
 ## Install
 ```bash
-npm install weather-data-api2
+npm install @voxgig-sdk/weather-data-api2
 ```
 ## Tutorial: your first API call
 

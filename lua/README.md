@@ -10,7 +10,7 @@ The Lua SDK for the WeatherDataApi2 API — an entity-oriented client using Lua 
 
 ## Install
 ```bash
-luarocks install weather-data-api2-sdk
+luarocks install voxgig-sdk-weather-data-api2
 ```
 
 If the module is not yet published, add the source directory to

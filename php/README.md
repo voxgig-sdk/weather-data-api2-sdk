@@ -10,7 +10,7 @@ The PHP SDK for the WeatherDataApi2 API — an entity-oriented client using PHP 
 
 ## Install
 ```bash
-composer require voxgig/weather-data-api2-sdk
+composer require voxgig-sdk/weather-data-api2
 ```
 
 
