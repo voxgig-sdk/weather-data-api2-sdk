@@ -81,7 +81,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## WeatherEntity
 
 ```python
-weather = client.weather
+weather = client.Weather()
 ```
 
 ### Fields
@@ -100,7 +100,9 @@ weather = client.weather
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.weather.list({})
+results = client.Weather().list({})
+for weather in results:
+    print(weather)
 ```
 
 ### Common Methods

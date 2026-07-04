@@ -110,7 +110,7 @@ Alias for `WeatherDataApi2SDK.test()`.
 ## WeatherEntity
 
 ```ts
-const weather = client.weather
+const weather = client.Weather()
 ```
 
 ### Fields
@@ -129,7 +129,7 @@ const weather = client.weather
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.weather.list()
+const results = await client.Weather().list()
 ```
 
 ### Common Methods

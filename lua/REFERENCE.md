@@ -84,7 +84,7 @@ same parameters as `direct()`.
 ## WeatherEntity
 
 ```lua
-local weather = client:weather(nil)
+local weather = client:Weather(nil)
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ local weather = client:weather(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:weather():list()
+local results, err = client:Weather():list()
 ```
 
 ### Common Methods

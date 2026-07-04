@@ -28,9 +28,11 @@ const client = new WeatherDataApi2SDK({
   apikey: process.env.WEATHER_DATA_API2_APIKEY,
 })
 
-// List all weathers
-const weathers = await client.weather.list()
-console.log(weathers.data)
+// List all weathers (returns Weather[])
+const weathers = await client.Weather().list()
+for (const weather of weathers) {
+  console.log(weather)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -88,9 +90,10 @@ client = WeatherDataApi2SDK({
     "apikey": os.environ.get("WEATHER_DATA_API2_APIKEY"),
 })
 
-# List all weathers
-weathers = client.weather.list()
-print(weathers)
+# List all weathers (returns a list, raises on error)
+weathers = client.Weather().list({})
+for weather in weathers:
+    print(weather)
 ```
 
 ### PHP
@@ -103,8 +106,8 @@ $client = new WeatherDataApi2SDK([
     "apikey" => getenv("WEATHER_DATA_API2_APIKEY"),
 ]);
 
-// List all weathers (throws on error)
-$weathers = $client->weather()->list();
+// List all weathers (returns an array; throws on error)
+$weathers = $client->Weather()->list();
 print_r($weathers);
 ```
 
@@ -131,8 +134,8 @@ client = WeatherDataApi2SDK.new({
   "apikey" => ENV["WEATHER_DATA_API2_APIKEY"],
 })
 
-# List all weathers
-weathers = client.weather.list
+# List all weathers (returns an Array; raises on error)
+weathers = client.Weather.list
 puts weathers
 ```
 
@@ -146,7 +149,7 @@ local client = sdk.new({
 })
 
 -- List all weathers
-local weathers, err = client:weather():list()
+local weathers, err = client:Weather():list()
 print(weathers)
 ```
 
@@ -159,22 +162,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WeatherDataApi2SDK.test()
-const result = await client.weather.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const weather = await client.Weather().load({ id: 1 })
+// weather is a bare Weather populated with mock data
+console.log(weather)
 ```
 
 ### Python
 
 ```python
 client = WeatherDataApi2SDK.test()
-result = client.weather.load({"id": "test01"})
+weather = client.Weather().load({"id": "test01"})
+print(weather)
 ```
 
 ### PHP
 
 ```php
-$client = WeatherDataApi2SDK::test();
-$result = $client->weather()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WeatherDataApi2SDK::test([
+    "entity" => ["weather" => ["test01" => ["id" => "test01"]]],
+]);
+$weather = $client->Weather()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -189,15 +197,18 @@ result, err := client.Weather(nil).Load(
 ### Ruby
 
 ```ruby
-client = WeatherDataApi2SDK.test
-result = client.weather.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WeatherDataApi2SDK.test({
+  "entity" => { "weather" => { "test01" => { "id" => "test01" } } },
+})
+weather = client.Weather.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:weather():load({ id = "test01" })
+local result, err = client:Weather():load({ id = "test01" })
 ```
 
 ## How it works
@@ -245,6 +256,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
