@@ -21,7 +21,7 @@ class Weather
     public ?string $main = null;
 }
 
-/** Match filter for Weather#list (any subset of Weather fields). */
+/** Request payload for Weather#list. */
 class WeatherListMatch
 {
     public ?string $description = null;

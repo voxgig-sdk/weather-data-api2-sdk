@@ -91,10 +91,10 @@ local weather = client:Weather(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `main` | ``$STRING`` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `id` | `number` | No |  |
+| `main` | `string` | No |  |
 
 ### Operations
 

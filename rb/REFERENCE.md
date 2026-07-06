@@ -8,7 +8,7 @@ Complete API reference for the WeatherDataApi2 Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'weather-data-api2_sdk'
+require_relative 'WeatherDataApi2_sdk'
 
 client = WeatherDataApi2SDK.new(options)
 ```
@@ -94,19 +94,19 @@ weather = client.Weather
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `main` | ``$STRING`` | No |  |
+| `description` | `String` | No |  |
+| `icon` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `main` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Weather.list(nil)
+results = client.Weather.list
 ```
 
 ### Common Methods

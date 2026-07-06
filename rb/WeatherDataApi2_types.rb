@@ -29,7 +29,7 @@ Weather = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Weather#list (any subset of Weather fields).
+# Request payload for Weather#list.
 #
 # @!attribute [rw] description
 #   @return [String, nil]

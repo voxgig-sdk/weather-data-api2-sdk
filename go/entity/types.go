@@ -16,8 +16,7 @@ type Weather struct {
 	Main *string `json:"main,omitempty"`
 }
 
-// WeatherListMatch mirrors the weather fields as an all-optional match
-// filter (Go analog of Partial<Weather>).
+// WeatherListMatch is the typed request payload for Weather.ListTyped.
 type WeatherListMatch struct {
 	Description *string `json:"description,omitempty"`
 	Icon *string `json:"icon,omitempty"`

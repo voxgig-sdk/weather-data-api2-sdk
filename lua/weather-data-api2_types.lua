@@ -13,6 +13,10 @@
 ---@field main? string
 
 ---@class WeatherListMatch
+---@field description? string
+---@field icon? string
+---@field id? number
+---@field main? string
 
 local M = {}
 

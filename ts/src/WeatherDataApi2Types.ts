@@ -12,5 +12,10 @@ export interface Weather {
   main?: string
 }
 
-export type WeatherListMatch = Partial<Weather>
+export interface WeatherListMatch {
+  description?: string
+  icon?: string
+  id?: number
+  main?: string
+}
 

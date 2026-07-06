@@ -8,7 +8,7 @@ Complete API reference for the WeatherDataApi2 Python SDK.
 ### Constructor
 
 ```python
-from weather-data-api2_sdk import WeatherDataApi2SDK
+from weatherdataapi2_sdk import WeatherDataApi2SDK
 
 client = WeatherDataApi2SDK(options)
 ```
@@ -88,19 +88,19 @@ weather = client.Weather()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `main` | ``$STRING`` | No |  |
+| `description` | `str` | No |  |
+| `icon` | `str` | No |  |
+| `id` | `int` | No |  |
+| `main` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Weather().list({})
+results = client.Weather().list()
 for weather in results:
     print(weather)
 ```
