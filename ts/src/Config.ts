@@ -39,7 +39,7 @@ class Config {
     base: 'https://api.openweathermap.org/data/2.5',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

@@ -15,7 +15,7 @@ func MakeConfig() map[string]any {
 		"options": map[string]any{
 			"base": "https://api.openweathermap.org/data/2.5",
 			"auth": map[string]any{
-				"prefix": "Bearer",
+				"prefix": "",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",

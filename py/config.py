@@ -16,7 +16,7 @@ def make_config():
         "options": {
             "base": "https://api.openweathermap.org/data/2.5",
             "auth": {
-                "prefix": "Bearer",
+                "prefix": "",
             },
             "headers": {
         "content-type": "application/json",

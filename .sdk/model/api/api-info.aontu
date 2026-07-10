@@ -9,15 +9,22 @@ main: {
         url: "https://api.openweathermap.org"
       }
       description: "This API provides weather data, including current conditions, forecasts, and historical weather information. It allows users to access weather information for various locations worldwide."
+      security: {
+        in: "query"
+        name: "appid"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Production server"
           url: "https://api.openweathermap.org/data/2.5"
         }
       ]
+      summary: "This API provides weather data, including current conditions, forecasts, and historical weather information."
       title: "Weather Data API"
       version: "2.5.0"
+      website: "https://openweathermap.org"
     }
   }
-}
-
