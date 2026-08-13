@@ -26,8 +26,8 @@ import {
 describe('WeatherEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEATHERDATAAPI2_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEATHERDATAAPI2_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEATHER_DATA_API2_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEATHER_DATA_API2_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WeatherDataApi2SDK.test()
@@ -38,7 +38,7 @@ describe('WeatherEntity', async () => {
 
   test('basic', async (t) => {
 
-    const live = 'TRUE' === process.env.WEATHER_DATA_API__TEST_LIVE
+    const live = 'TRUE' === process.env.WEATHER_DATA_API2_TEST_LIVE
     for (const op of ['list']) {
       if (maybeSkipControl(t, 'entityOp', 'weather.' + op, live)) return
     }
@@ -48,7 +48,7 @@ describe('WeatherEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set WEATHER_DATA_API__TEST_WEATHER_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set WEATHER_DATA_API2_TEST_WEATHER_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -63,7 +63,7 @@ describe('WeatherEntity', async () => {
     const weather_ref01_ent = client.Weather()
     const weather_ref01_match: any = {}
 
-    const weather_ref01_list = await weather_ref01_ent.list(weather_ref01_match)
+    const weather_ref01_list = (await weather_ref01_ent.list(weather_ref01_match)).map((e: any) => e.data())
 
 
   })
@@ -106,24 +106,24 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['WEATHER_DATA_API__TEST_WEATHER_ENTID']
+  const idmapEnvVal = process.env['WEATHER_DATA_API2_TEST_WEATHER_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'WEATHER_DATA_API__TEST_WEATHER_ENTID': idmap,
-    'WEATHER_DATA_API__TEST_LIVE': 'FALSE',
-    'WEATHER_DATA_API__TEST_EXPLAIN': 'FALSE',
-    'WEATHER_DATA_API__APIKEY': 'NONE',
+    'WEATHER_DATA_API2_TEST_WEATHER_ENTID': idmap,
+    'WEATHER_DATA_API2_TEST_LIVE': 'FALSE',
+    'WEATHER_DATA_API2_TEST_EXPLAIN': 'FALSE',
+    'WEATHER_DATA_API2_APIKEY': 'NONE',
   })
 
-  idmap = env['WEATHER_DATA_API__TEST_WEATHER_ENTID']
+  idmap = env['WEATHER_DATA_API2_TEST_WEATHER_ENTID']
 
-  const live = 'TRUE' === env.WEATHER_DATA_API__TEST_LIVE
+  const live = 'TRUE' === env.WEATHER_DATA_API2_TEST_LIVE
 
   if (live) {
     client = new WeatherDataApi2SDK(merge([
       {
-        apikey: env.WEATHER_DATA_API__APIKEY,
+        apikey: env.WEATHER_DATA_API2_APIKEY,
       },
       extra
     ]))
@@ -136,7 +136,7 @@ function basicSetup(extra?: any) {
     client,
     struct,
     data: entityData,
-    explain: 'TRUE' === env.WEATHER_DATA_API__TEST_EXPLAIN,
+    explain: 'TRUE' === env.WEATHER_DATA_API2_TEST_EXPLAIN,
     live,
     syntheticOnly: live && !idmapOverridden,
     now: Date.now(),

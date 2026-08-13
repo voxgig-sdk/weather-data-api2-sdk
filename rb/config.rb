@@ -149,6 +149,7 @@ module WeatherDataApi2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/weather",
                   "parts" => [

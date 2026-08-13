@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ WeatherDataApi2Utility::setRegistrar(function (WeatherDataApi2Utility $u): void 
     $u->prepare_params = [WeatherDataApi2PrepareParams::class, 'call'];
     $u->prepare_path = [WeatherDataApi2PreparePath::class, 'call'];
     $u->prepare_query = [WeatherDataApi2PrepareQuery::class, 'call'];
+    $u->graphql_body = [WeatherDataApi2Graphql::class, 'body'];
+    $u->graphql_errors = [WeatherDataApi2Graphql::class, 'errors'];
     $u->result_basic = [WeatherDataApi2ResultBasic::class, 'call'];
     $u->result_body = [WeatherDataApi2ResultBody::class, 'call'];
     $u->result_headers = [WeatherDataApi2ResultHeaders::class, 'call'];

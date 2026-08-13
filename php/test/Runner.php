@@ -43,8 +43,8 @@ class WeatherDataApi2TestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('WEATHERDATAAPI2_TEST_LIVE');
-        $override = self::getenv('WEATHERDATAAPI2_TEST_OVERRIDE');
+        $live = self::getenv('WEATHER_DATA_API2_TEST_LIVE');
+        $override = self::getenv('WEATHER_DATA_API2_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class WeatherDataApi2TestRunner
             }
         }
 
-        $explain = self::getenv('WEATHERDATAAPI2_TEST_EXPLAIN');
+        $explain = self::getenv('WEATHER_DATA_API2_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['WEATHERDATAAPI2_TEST_EXPLAIN'] = $explain;
+            $m['WEATHER_DATA_API2_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

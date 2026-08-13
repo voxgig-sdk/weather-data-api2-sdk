@@ -60,16 +60,16 @@ def weather_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WEATHERDATAAPI__TEST_WEATHER_ENTID" => {},
-    "WEATHERDATAAPI__TEST_LIVE" => "FALSE",
-    "WEATHERDATAAPI__APIKEY" => "NONE",
+    "WEATHER_DATA_API2_TEST_WEATHER_ENTID" => {},
+    "WEATHER_DATA_API2_TEST_LIVE" => "FALSE",
+    "WEATHER_DATA_API2_APIKEY" => "NONE",
   })
 
-  live = env["WEATHERDATAAPI__TEST_LIVE"] == "TRUE"
+  live = env["WEATHER_DATA_API2_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["WEATHERDATAAPI__APIKEY"],
+      "apikey" => env["WEATHER_DATA_API2_APIKEY"],
     }
     client = WeatherDataApi2SDK.new(merged_opts)
     return {

@@ -92,7 +92,7 @@ func TestWeatherEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set WEATHERDATAAPI__TEST_WEATHER_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set WEATHER_DATA_API2_TEST_WEATHER_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,38 +160,38 @@ func weatherBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("WEATHERDATAAPI__TEST_WEATHER_ENTID")
+	entidEnvRaw := os.Getenv("WEATHER_DATA_API2_TEST_WEATHER_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"WEATHERDATAAPI__TEST_WEATHER_ENTID": idmap,
-		"WEATHERDATAAPI__TEST_LIVE":      "FALSE",
-		"WEATHERDATAAPI__TEST_EXPLAIN":   "FALSE",
-		"WEATHERDATAAPI__APIKEY":         "NONE",
+		"WEATHER_DATA_API2_TEST_WEATHER_ENTID": idmap,
+		"WEATHER_DATA_API2_TEST_LIVE":      "FALSE",
+		"WEATHER_DATA_API2_TEST_EXPLAIN":   "FALSE",
+		"WEATHER_DATA_API2_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["WEATHERDATAAPI__TEST_WEATHER_ENTID"])
+	idmapResolved := core.ToMapAny(env["WEATHER_DATA_API2_TEST_WEATHER_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["WEATHERDATAAPI__TEST_LIVE"] == "TRUE" {
+	if env["WEATHER_DATA_API2_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["WEATHERDATAAPI__APIKEY"],
+				"apikey": env["WEATHER_DATA_API2_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewWeatherDataApi2SDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["WEATHERDATAAPI__TEST_LIVE"] == "TRUE"
+	live := env["WEATHER_DATA_API2_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["WEATHERDATAAPI__TEST_EXPLAIN"] == "TRUE",
+		explain:       env["WEATHER_DATA_API2_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

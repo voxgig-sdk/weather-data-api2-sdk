@@ -37,7 +37,9 @@ const client = new WeatherDataApi2SDK({
 
 ### 2. List weather records
 
-`list()` resolves to an array of Weather objects — iterate it directly:
+`list()` resolves to an array of Weather ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const weathers = await client.Weather().list()
@@ -122,7 +124,8 @@ Create a mock client for unit testing — no server required:
 const client = WeatherDataApi2SDK.test()
 
 const weather = await client.Weather().list()
-// weather is a bare entity populated with mock response data
+// weather is the entity, populated with mock response data
+// — call weather.data() for the record itself
 console.log(weather)
 ```
 

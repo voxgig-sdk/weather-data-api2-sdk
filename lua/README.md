@@ -222,9 +222,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local weather, err = client:Weather():load()
+    local weather, err = client:Weather():list()
     if err then error(err) end
-    -- weather is the loaded record
+    -- weather is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

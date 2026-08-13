@@ -23,8 +23,8 @@ module WeatherDataApi2TestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WEATHERDATAAPI2_TEST_LIVE")
-    override = getenv("WEATHERDATAAPI2_TEST_OVERRIDE")
+    live = getenv("WEATHER_DATA_API2_TEST_LIVE")
+    override = getenv("WEATHER_DATA_API2_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WeatherDataApi2TestRunner
       end
     end
 
-    explain = getenv("WEATHERDATAAPI2_TEST_EXPLAIN")
-    m["WEATHERDATAAPI2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WEATHER_DATA_API2_TEST_EXPLAIN")
+    m["WEATHER_DATA_API2_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end
