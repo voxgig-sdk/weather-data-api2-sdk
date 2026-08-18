@@ -40,7 +40,7 @@ class WeatherDataApi2SDK
         $utility = new WeatherDataApi2Utility();
         $this->_utility = $utility;
 
-        $config = WeatherDataApi2Config::make_config();
+        $config = WeatherDataApi2Config::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

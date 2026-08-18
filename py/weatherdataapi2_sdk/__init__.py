@@ -23,8 +23,8 @@ class WeatherDataApi2SDK:
         utility = WeatherDataApi2Utility()
         self._utility = utility
 
-        from weatherdataapi2_sdk.config import make_config
-        config = make_config()
+        from weatherdataapi2_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
