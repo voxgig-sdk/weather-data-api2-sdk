@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "WeatherDataApi2",
+			"slug": "weather-data-api2",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,18 +39,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
+						"short": "Weather condition within the group",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "Weather icon id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Weather condition id",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "main",
+						"short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
 						"type": "`$STRING`",
 					},
 				},

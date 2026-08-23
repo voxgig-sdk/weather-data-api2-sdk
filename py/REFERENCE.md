@@ -88,10 +88,10 @@ weather = client.Weather()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `str` | No |  |
-| `icon` | `str` | No |  |
-| `id` | `int` | No |  |
-| `main` | `str` | No |  |
+| `description` | `str` | No | Weather condition within the group |
+| `icon` | `str` | No | Weather icon id |
+| `id` | `int` | No | Weather condition id |
+| `main` | `str` | No | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 ### Operations
 

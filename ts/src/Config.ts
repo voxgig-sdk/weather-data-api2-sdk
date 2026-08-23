@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'WeatherDataApi2',
+        slug: "weather-data-api2",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -60,18 +71,22 @@ class Config {
       "fields": [
         {
           "name": "description",
+          "short": "Weather condition within the group",
           "type": "`$STRING`"
         },
         {
           "name": "icon",
+          "short": "Weather icon id",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Weather condition id",
           "type": "`$INTEGER`"
         },
         {
           "name": "main",
+          "short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
           "type": "`$STRING`"
         }
       ],

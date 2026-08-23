@@ -6,7 +6,7 @@ The Golang SDK for the WeatherDataApi2 API — an entity-oriented client using s
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Weather(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -265,10 +265,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"description"` |  |
-| `"icon"` |  |
-| `"id"` |  |
-| `"main"` |  |
+| `"description"` | Weather condition within the group |
+| `"icon"` | Weather icon id |
+| `"id"` | Weather condition id |
+| `"main"` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: List.
 
@@ -293,10 +293,10 @@ Create an instance: `weather := client.Weather(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `id` | `int` |  |
-| `main` | `string` |  |
+| `description` | `string` | Weather condition within the group |
+| `icon` | `string` | Weather icon id |
+| `id` | `int` | Weather condition id |
+| `main` | `string` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

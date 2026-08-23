@@ -251,10 +251,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `icon` |  |
-| `id` |  |
-| `main` |  |
+| `description` | Weather condition within the group |
+| `icon` | Weather icon id |
+| `id` | Weather condition id |
+| `main` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: List.
 
@@ -279,10 +279,10 @@ Create an instance: `$weather = $client->Weather();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `id` | `int` |  |
-| `main` | `string` |  |
+| `description` | `string` | Weather condition within the group |
+| `icon` | `string` | Weather icon id |
+| `id` | `int` | Weather condition id |
+| `main` | `string` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

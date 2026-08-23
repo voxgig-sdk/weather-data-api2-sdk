@@ -91,10 +91,10 @@ local weather = client:Weather(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `description` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `id` | `number` | No |  |
-| `main` | `string` | No |  |
+| `description` | `string` | No | Weather condition within the group |
+| `icon` | `string` | No | Weather icon id |
+| `id` | `number` | No | Weather condition id |
+| `main` | `string` | No | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 ### Operations
 

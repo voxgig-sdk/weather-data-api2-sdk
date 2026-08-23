@@ -241,10 +241,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `icon` |  |
-| `id` |  |
-| `main` |  |
+| `description` | Weather condition within the group |
+| `icon` | Weather icon id |
+| `id` | Weather condition id |
+| `main` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: List.
 
@@ -269,10 +269,10 @@ Create an instance: `weather = client.Weather`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `String` |  |
-| `icon` | `String` |  |
-| `id` | `Integer` |  |
-| `main` | `String` |  |
+| `description` | `String` | Weather condition within the group |
+| `icon` | `String` | Weather icon id |
+| `id` | `Integer` | Weather condition id |
+| `main` | `String` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

@@ -235,10 +235,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `icon` |  |
-| `id` |  |
-| `main` |  |
+| `description` | Weather condition within the group |
+| `icon` | Weather icon id |
+| `id` | Weather condition id |
+| `main` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: List.
 
@@ -263,10 +263,10 @@ Create an instance: `local weather = client:Weather(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `id` | `number` |  |
-| `main` | `string` |  |
+| `description` | `string` | Weather condition within the group |
+| `icon` | `string` | Weather icon id |
+| `id` | `number` | Weather condition id |
+| `main` | `string` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

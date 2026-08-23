@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -293,10 +293,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `icon` |  |
-| `id` |  |
-| `main` |  |
+| `description` | Weather condition within the group |
+| `icon` | Weather icon id |
+| `id` | Weather condition id |
+| `main` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: list.
 
@@ -321,10 +321,10 @@ Create an instance: `const weather = client.Weather()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `id` | `number` |  |
-| `main` | `string` |  |
+| `description` | `string` | Weather condition within the group |
+| `icon` | `string` | Weather icon id |
+| `id` | `number` | Weather condition id |
+| `main` | `string` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

@@ -248,10 +248,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `description` |  |
-| `icon` |  |
-| `id` |  |
-| `main` |  |
+| `description` | Weather condition within the group |
+| `icon` | Weather icon id |
+| `id` | Weather condition id |
+| `main` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 Operations: List.
 
@@ -276,10 +276,10 @@ Create an instance: `weather = client.Weather()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `description` | `str` |  |
-| `icon` | `str` |  |
-| `id` | `int` |  |
-| `main` | `str` |  |
+| `description` | `str` | Weather condition within the group |
+| `icon` | `str` | Weather icon id |
+| `id` | `int` | Weather condition id |
+| `main` | `str` | Group of weather parameters (Rain, Snow, Extreme etc.) |
 
 #### Example: List
 

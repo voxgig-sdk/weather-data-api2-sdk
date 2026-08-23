@@ -8,21 +8,25 @@ main: kit: entity: weather: {
     {
       name: "description"
       req: false
+      short: "Weather condition within the group"
       type: "`$STRING`"
     }
     {
       name: "icon"
       req: false
+      short: "Weather icon id"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Weather condition id"
       type: "`$INTEGER`"
     }
     {
       name: "main"
       req: false
+      short: "Group of weather parameters (Rain, Snow, Extreme etc.)"
       type: "`$STRING`"
     }
   ]

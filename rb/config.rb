@@ -19,6 +19,9 @@ module WeatherDataApi2Config
     {
       "main" => {
         "name" => "WeatherDataApi2",
+        "slug" => "weather-data-api2",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -44,18 +47,22 @@ module WeatherDataApi2Config
           "fields" => [
             {
               "name" => "description",
+              "short" => "Weather condition within the group",
               "type" => "`$STRING`",
             },
             {
               "name" => "icon",
+              "short" => "Weather icon id",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Weather condition id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "main",
+              "short" => "Group of weather parameters (Rain, Snow, Extreme etc.)",
               "type" => "`$STRING`",
             },
           ],

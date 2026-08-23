@@ -36,24 +36,28 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Weather condition within the group",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "Weather icon id",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Weather condition id",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "main",
               "req": false,
+              "short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
               "type": "`$STRING`"
             }
           ],
