@@ -28,6 +28,7 @@ module WeatherDataApi2Config
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
