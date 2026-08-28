@@ -13,9 +13,14 @@ export interface Weather {
 }
 
 export interface WeatherListMatch {
-  description?: string
-  icon?: string
+  appid: string
   id?: number
-  main?: string
+  lang?: string
+  lat?: number
+  lon?: number
+  mode?: string
+  q?: string
+  unit?: string
+  zip?: string
 }
 

@@ -24,9 +24,14 @@ class Weather
 /** Request payload for Weather#list. */
 class WeatherListMatch
 {
-    public ?string $description = null;
-    public ?string $icon = null;
+    public string $appid;
     public ?int $id = null;
-    public ?string $main = null;
+    public ?string $lang = null;
+    public ?float $lat = null;
+    public ?float $lon = null;
+    public ?string $mode = null;
+    public ?string $q = null;
+    public ?string $unit = null;
+    public ?string $zip = null;
 }
 

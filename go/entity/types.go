@@ -22,10 +22,15 @@ type Weather struct {
 
 // WeatherListMatch is the typed request payload for Weather.ListTyped.
 type WeatherListMatch struct {
-	Description *string `json:"description,omitempty"`
-	Icon *string `json:"icon,omitempty"`
+	Appid string `json:"appid"`
 	Id *int `json:"id,omitempty"`
-	Main *string `json:"main,omitempty"`
+	Lang *string `json:"lang,omitempty"`
+	Lat *float64 `json:"lat,omitempty"`
+	Lon *float64 `json:"lon,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	Q *string `json:"q,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	Zip *string `json:"zip,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

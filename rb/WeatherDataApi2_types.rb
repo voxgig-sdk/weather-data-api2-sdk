@@ -31,22 +31,42 @@ Weather = Struct.new(
 
 # Request payload for Weather#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] icon
-#   @return [String, nil]
+# @!attribute [rw] appid
+#   @return [String]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] main
+# @!attribute [rw] lang
+#   @return [String, nil]
+#
+# @!attribute [rw] lat
+#   @return [Float, nil]
+#
+# @!attribute [rw] lon
+#   @return [Float, nil]
+#
+# @!attribute [rw] mode
+#   @return [String, nil]
+#
+# @!attribute [rw] q
+#   @return [String, nil]
+#
+# @!attribute [rw] unit
+#   @return [String, nil]
+#
+# @!attribute [rw] zip
 #   @return [String, nil]
 WeatherListMatch = Struct.new(
-  :description,
-  :icon,
+  :appid,
   :id,
-  :main,
+  :lang,
+  :lat,
+  :lon,
+  :mode,
+  :q,
+  :unit,
+  :zip,
   keyword_init: true
 )
 

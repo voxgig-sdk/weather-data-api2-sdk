@@ -23,8 +23,16 @@ class Weather(TypedDict, total=False):
     main: str
 
 
-class WeatherListMatch(TypedDict, total=False):
-    description: str
-    icon: str
+class WeatherListMatchRequired(TypedDict):
+    appid: str
+
+
+class WeatherListMatch(WeatherListMatchRequired, total=False):
     id: int
-    main: str
+    lang: str
+    lat: float
+    lon: float
+    mode: str
+    q: str
+    unit: str
+    zip: str

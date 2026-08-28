@@ -13,10 +13,15 @@
 ---@field main? string
 
 ---@class WeatherListMatch
----@field description? string
----@field icon? string
+---@field appid string
 ---@field id? number
----@field main? string
+---@field lang? string
+---@field lat? number
+---@field lon? number
+---@field mode? string
+---@field q? string
+---@field unit? string
+---@field zip? string
 
 local M = {}
 
