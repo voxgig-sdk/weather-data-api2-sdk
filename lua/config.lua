@@ -55,6 +55,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "weather",
         ["op"] = {
           ["list"] = {
@@ -132,8 +136,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/weather",
-                ["parts"] = {
-                  "weather",
+                ["segments"] = {
+                  {
+                    ["lit"] = "weather",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -151,6 +157,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.weather`",
+                },
+                ["parts"] = {
+                  "weather",
                 },
               },
             },

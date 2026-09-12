@@ -81,6 +81,10 @@ class WeatherDataApi2Config
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'weather',
           'op' => [
             'list' => [
@@ -158,8 +162,10 @@ class WeatherDataApi2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/weather',
-                  'parts' => [
-                    'weather',
+                  'segments' => [
+                    [
+                      'lit' => 'weather',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -177,6 +183,9 @@ class WeatherDataApi2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.weather`',
+                  ],
+                  'parts' => [
+                    'weather',
                   ],
                 ],
               ],

@@ -119,8 +119,10 @@ main: kit: entity: weather: {
           }
           method: "GET"
           orig: "/weather"
-          parts: [
-            "weather"
+          segments: [
+            {
+              lit: "weather"
+            }
           ]
           select: {
             exist: [
