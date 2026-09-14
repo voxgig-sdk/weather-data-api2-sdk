@@ -105,7 +105,7 @@ local results, err = client:Weather():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/weather-data-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/weather-data-api2-sdk/releases) |
+| TypeScript | `@voxgig-sdk/weather-data-api2-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/weather-data-api2-sdk/releases) |
 | Python | `voxgig-sdk-weather-data-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/weather-data-api2-sdk/releases) |
 | PHP | `voxgig-sdk/weather-data-api2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/weather-data-api2-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/weather-data-api2-sdk/go` | `go get github.com/voxgig-sdk/weather-data-api2-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Weather():list()
 ### TypeScript
 
 ```ts
-import { WeatherDataApi2SDK } from '@voxgig-sdk/weather-data-api2'
+import { WeatherDataApi2SDK } from '@voxgig-sdk/weather-data-api2-sdk'
 
 const client = new WeatherDataApi2SDK({
   apikey: process.env.WEATHER_DATA_API2_APIKEY,
