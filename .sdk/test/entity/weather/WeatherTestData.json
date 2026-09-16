@@ -29,5 +29,354 @@
         "main": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /weather": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCurrentWeather",
+        "parameters": [
+          {
+            "description": "City name, state code (US only), and country code divided by comma. Use ISO 3166 country codes.",
+            "example": "London,uk",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "City ID. List of city IDs can be downloaded from OpenWeatherMap.",
+            "example": 2643743,
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Latitude of the location",
+            "example": 51.5074,
+            "in": "query",
+            "name": "lat",
+            "required": false,
+            "schema": {
+              "format": "float",
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Longitude of the location",
+            "example": -0.1278,
+            "in": "query",
+            "name": "lon",
+            "required": false,
+            "schema": {
+              "format": "float",
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Zip code and country code divided by comma",
+            "example": "94040,us",
+            "in": "query",
+            "name": "zip",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Units of measurement. standard (Kelvin), metric (Celsius), or imperial (Fahrenheit)",
+            "in": "query",
+            "name": "units",
+            "required": false,
+            "schema": {
+              "default": "standard",
+              "enum": [
+                "standard",
+                "metric",
+                "imperial"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Language code for the output. See API documentation for available languages.",
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "default": "en",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Response format. json or xml",
+            "in": "query",
+            "name": "mode",
+            "required": false,
+            "schema": {
+              "default": "json",
+              "enum": [
+                "json",
+                "xml"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "API key for authentication",
+            "in": "query",
+            "name": "appid",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "base": {
+                      "description": "Internal parameter",
+                      "type": "string"
+                    },
+                    "clouds": {
+                      "properties": {
+                        "all": {
+                          "description": "Cloudiness percentage",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "cod": {
+                      "description": "Internal parameter",
+                      "type": "integer"
+                    },
+                    "coord": {
+                      "properties": {
+                        "lat": {
+                          "description": "Latitude of the location",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "lon": {
+                          "description": "Longitude of the location",
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "dt": {
+                      "description": "Time of data calculation, unix UTC",
+                      "type": "integer"
+                    },
+                    "id": {
+                      "description": "City ID",
+                      "type": "integer"
+                    },
+                    "main": {
+                      "properties": {
+                        "feels_like": {
+                          "description": "Temperature accounting for human perception",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "grnd_level": {
+                          "description": "Atmospheric pressure on the ground level, hPa",
+                          "type": "integer"
+                        },
+                        "humidity": {
+                          "description": "Humidity percentage",
+                          "type": "integer"
+                        },
+                        "pressure": {
+                          "description": "Atmospheric pressure on the sea level, hPa",
+                          "type": "integer"
+                        },
+                        "sea_level": {
+                          "description": "Atmospheric pressure on the sea level, hPa",
+                          "type": "integer"
+                        },
+                        "temp": {
+                          "description": "Temperature",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "temp_max": {
+                          "description": "Maximum temperature at the moment",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "temp_min": {
+                          "description": "Minimum temperature at the moment",
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "name": {
+                      "description": "City name",
+                      "type": "string"
+                    },
+                    "rain": {
+                      "properties": {
+                        "1h": {
+                          "description": "Rain volume for the last 1 hour, mm",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "3h": {
+                          "description": "Rain volume for the last 3 hours, mm",
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "snow": {
+                      "properties": {
+                        "1h": {
+                          "description": "Snow volume for the last 1 hour, mm",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "3h": {
+                          "description": "Snow volume for the last 3 hours, mm",
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "sys": {
+                      "properties": {
+                        "country": {
+                          "description": "Country code (ISO 3166)",
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "Internal parameter",
+                          "type": "integer"
+                        },
+                        "sunrise": {
+                          "description": "Sunrise time, unix UTC",
+                          "type": "integer"
+                        },
+                        "sunset": {
+                          "description": "Sunset time, unix UTC",
+                          "type": "integer"
+                        },
+                        "type": {
+                          "description": "Internal parameter",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "timezone": {
+                      "description": "Shift in seconds from UTC",
+                      "type": "integer"
+                    },
+                    "visibility": {
+                      "description": "Visibility in meters, maximum 10km",
+                      "type": "integer"
+                    },
+                    "weather": {
+                      "items": {
+                        "properties": {
+                          "description": {
+                            "description": "Weather condition within the group",
+                            "type": "string"
+                          },
+                          "icon": {
+                            "description": "Weather icon id",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "Weather condition id",
+                            "type": "integer"
+                          },
+                          "main": {
+                            "description": "Group of weather parameters (Rain, Snow, Extreme etc.)",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "wind": {
+                      "properties": {
+                        "deg": {
+                          "description": "Wind direction in degrees",
+                          "type": "integer"
+                        },
+                        "gust": {
+                          "description": "Wind gust",
+                          "format": "float",
+                          "type": "number"
+                        },
+                        "speed": {
+                          "description": "Wind speed",
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with current weather data"
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters"
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key"
+          },
+          "404": {
+            "description": "Not found - City not found"
+          },
+          "429": {
+            "description": "Too many requests - Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key required for authentication. Obtain from OpenWeatherMap.",
+            "in": "query",
+            "name": "appid",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
   }
 }
