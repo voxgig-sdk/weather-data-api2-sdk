@@ -123,6 +123,8 @@ class Config {
 
     auth: {
       prefix: '',
+      in: 'query',
+      name: 'appid',
     },
 
     headers: {
@@ -131,9 +133,9 @@ class Config {
 
     entity: {
       
-      weather: {
-      },
-
+        weather: {
+        },
+  
     }
   }
 

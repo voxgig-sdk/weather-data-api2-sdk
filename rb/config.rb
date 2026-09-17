@@ -89,6 +89,8 @@ module WeatherDataApi2Config
         "base" => "https://api.openweathermap.org/data/2.5",
         "auth" => {
           "prefix" => "",
+          "in" => "query",
+          "name" => "appid",
         },
         "headers" => {
           "content-type" => "application/json",
