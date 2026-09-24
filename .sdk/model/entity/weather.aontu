@@ -1,0 +1,160 @@
+# Entity: weather
+
+main: kit: entity: weather: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Weather condition within the group"
+      t: "`$STRING`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: false
+      sh: "Weather icon id"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Weather condition id"
+      t: "`$INTEGER`"
+    }
+    main: {
+      h: "Main"
+      n: "main"
+      r: false
+      sh: "Group of weather parameters (Rain, Snow, Extreme etc.)"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "weather"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /weather"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "appid"
+                or: "appid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 2643743
+                k: "query"
+                n: "id"
+                or: "id"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "en"
+                k: "query"
+                n: "lang"
+                or: "lang"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 51.5074
+                k: "query"
+                n: "lat"
+                or: "lat"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: -0.1278
+                k: "query"
+                n: "lon"
+                or: "lon"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: "json"
+                k: "query"
+                n: "mode"
+                or: "mode"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "London,uk"
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "standard"
+                k: "query"
+                n: "unit"
+                or: "unit"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "94040,us"
+                k: "query"
+                n: "zip"
+                or: "zip"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/weather"
+          q: {
+            exist: [
+              "appid"
+              "id"
+              "lang"
+              "lat"
+              "lon"
+              "mode"
+              "q"
+              "unit"
+              "zip"
+            ]
+          }
+          s: [
+            {
+              lit: "weather"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.weather`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

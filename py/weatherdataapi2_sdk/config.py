@@ -121,23 +121,27 @@ def make_config():
         "fields": [
           {
             "name": "description",
-            "short": "Weather condition within the group",
+            "title": "Description",
             "type": "`$STRING`",
+            "short": "Weather condition within the group",
           },
           {
             "name": "icon",
-            "short": "Weather icon id",
+            "title": "Icon",
             "type": "`$STRING`",
+            "short": "Weather icon id",
           },
           {
             "name": "id",
-            "short": "Weather condition id",
+            "title": "Id",
             "type": "`$INTEGER`",
+            "short": "Weather condition id",
           },
           {
             "name": "main",
-            "short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
+            "title": "Main",
             "type": "`$STRING`",
+            "short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
           },
         ],
         "id": {
@@ -151,73 +155,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "kind": "query",
-                      "name": "appid",
-                      "orig": "appid",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 2643743,
-                      "kind": "query",
-                      "name": "id",
-                      "orig": "id",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": "en",
-                      "kind": "query",
-                      "name": "lang",
-                      "orig": "lang",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": 51.5074,
-                      "kind": "query",
-                      "name": "lat",
-                      "orig": "lat",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "example": -0.1278,
-                      "kind": "query",
-                      "name": "lon",
-                      "orig": "lon",
-                      "type": "`$NUMBER`",
-                    },
-                    {
-                      "example": "json",
-                      "kind": "query",
-                      "name": "mode",
-                      "orig": "mode",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "London,uk",
-                      "kind": "query",
-                      "name": "q",
-                      "orig": "q",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "standard",
-                      "kind": "query",
-                      "name": "unit",
-                      "orig": "unit",
-                      "type": "`$STRING`",
-                    },
-                    {
-                      "example": "94040,us",
-                      "kind": "query",
-                      "name": "zip",
-                      "orig": "zip",
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/weather",
@@ -226,6 +163,81 @@ def make_config():
                     "lit": "weather",
                   },
                 ],
+                "parts": [
+                  "weather",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.weather`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "appid",
+                      "orig": "appid",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                    },
+                    {
+                      "name": "id",
+                      "orig": "id",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 2643743,
+                    },
+                    {
+                      "name": "lang",
+                      "orig": "lang",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "en",
+                    },
+                    {
+                      "name": "lat",
+                      "orig": "lat",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": 51.5074,
+                    },
+                    {
+                      "name": "lon",
+                      "orig": "lon",
+                      "type": "`$NUMBER`",
+                      "kind": "query",
+                      "example": -0.1278,
+                    },
+                    {
+                      "name": "mode",
+                      "orig": "mode",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "json",
+                    },
+                    {
+                      "name": "q",
+                      "orig": "q",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "London,uk",
+                    },
+                    {
+                      "name": "unit",
+                      "orig": "unit",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "standard",
+                    },
+                    {
+                      "name": "zip",
+                      "orig": "zip",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "example": "94040,us",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "appid",
@@ -239,13 +251,6 @@ def make_config():
                     "zip",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.weather`",
-                },
-                "parts": [
-                  "weather",
-                ],
               },
             ],
           },

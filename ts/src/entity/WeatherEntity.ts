@@ -19,7 +19,6 @@ import type {
   WeatherListMatch,
 } from '../WeatherDataApi2Types'
 
-// TODO: needs Entity superclass
 class WeatherEntity extends WeatherDataApi2EntityBase<Weather> {
 
   constructor(client: WeatherDataApi2SDK, entopts: any) {

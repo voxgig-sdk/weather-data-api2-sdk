@@ -96,23 +96,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "description",
-						"short": "Weather condition within the group",
+						"title": "Description",
 						"type": "`$STRING`",
+						"short": "Weather condition within the group",
 					},
 					map[string]any{
 						"name": "icon",
-						"short": "Weather icon id",
+						"title": "Icon",
 						"type": "`$STRING`",
+						"short": "Weather icon id",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Weather condition id",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Weather condition id",
 					},
 					map[string]any{
 						"name": "main",
-						"short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
+						"title": "Main",
 						"type": "`$STRING`",
+						"short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
 					},
 				},
 				"id": map[string]any{
@@ -126,79 +130,87 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "appid",
-											"orig": "appid",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 2643743,
-											"kind": "query",
-											"name": "id",
-											"orig": "id",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "en",
-											"kind": "query",
-											"name": "lang",
-											"orig": "lang",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 51.5074,
-											"kind": "query",
-											"name": "lat",
-											"orig": "lat",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": -0.1278,
-											"kind": "query",
-											"name": "lon",
-											"orig": "lon",
-											"type": "`$NUMBER`",
-										},
-										map[string]any{
-											"example": "json",
-											"kind": "query",
-											"name": "mode",
-											"orig": "mode",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "London,uk",
-											"kind": "query",
-											"name": "q",
-											"orig": "q",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "standard",
-											"kind": "query",
-											"name": "unit",
-											"orig": "unit",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "94040,us",
-											"kind": "query",
-											"name": "zip",
-											"orig": "zip",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/weather",
 								"segments": []any{
 									map[string]any{
 										"lit": "weather",
+									},
+								},
+								"parts": []any{
+									"weather",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.weather`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "appid",
+											"orig": "appid",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 2643743,
+										},
+										map[string]any{
+											"name": "lang",
+											"orig": "lang",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "en",
+										},
+										map[string]any{
+											"name": "lat",
+											"orig": "lat",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": 51.5074,
+										},
+										map[string]any{
+											"name": "lon",
+											"orig": "lon",
+											"type": "`$NUMBER`",
+											"kind": "query",
+											"example": -0.1278,
+										},
+										map[string]any{
+											"name": "mode",
+											"orig": "mode",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "json",
+										},
+										map[string]any{
+											"name": "q",
+											"orig": "q",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "London,uk",
+										},
+										map[string]any{
+											"name": "unit",
+											"orig": "unit",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "standard",
+										},
+										map[string]any{
+											"name": "zip",
+											"orig": "zip",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "94040,us",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -213,13 +225,6 @@ func MakeConfig() map[string]any {
 										"unit",
 										"zip",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.weather`",
-								},
-								"parts": []any{
-									"weather",
 								},
 							},
 						},

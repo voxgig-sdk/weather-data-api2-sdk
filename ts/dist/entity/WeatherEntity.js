@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WeatherEntity = void 0;
 const WeatherDataApi2EntityBase_1 = require("../WeatherDataApi2EntityBase");
-// TODO: needs Entity superclass
 class WeatherEntity extends WeatherDataApi2EntityBase_1.WeatherDataApi2EntityBase {
     constructor(client, entopts) {
         super(client, entopts);

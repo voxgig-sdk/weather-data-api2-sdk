@@ -45,7 +45,7 @@ local weathers, err = client:Weather():list()
 if err then error(err) end
 
 for _, item in ipairs(weathers) do
-  print(item["id"], item["description"])
+  print(item["id"])
 end
 ```
 

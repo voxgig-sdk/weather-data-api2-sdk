@@ -24,42 +24,112 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "weather": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "Weather condition within the group",
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "Weather condition within the group",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "icon",
-              "req": false,
-              "short": "Weather icon id",
-              "type": "`$STRING`"
+            "icon": {
+              "a": true,
+              "h": "Icon",
+              "n": "icon",
+              "r": false,
+              "sh": "Weather icon id",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Weather condition id",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Weather condition id",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "main",
-              "req": false,
-              "short": "Group of weather parameters (Rain, Snow, Extreme etc.)",
-              "type": "`$STRING`"
+            "main": {
+              "a": true,
+              "h": "Main",
+              "n": "main",
+              "r": false,
+              "sh": "Group of weather parameters (Rain, Snow, Extreme etc.)",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -71,106 +141,100 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /weather",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "appid",
-                        "orig": "appid",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "appid",
+                        "or": "appid",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 2643743,
-                        "kind": "query",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 2643743,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": "en",
-                        "kind": "query",
-                        "name": "lang",
-                        "orig": "lang",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "en",
+                        "k": "query",
+                        "n": "lang",
+                        "or": "lang",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 51.5074,
-                        "kind": "query",
-                        "name": "lat",
-                        "orig": "lat",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
+                        "a": true,
+                        "ex": 51.5074,
+                        "k": "query",
+                        "n": "lat",
+                        "or": "lat",
+                        "r": false,
+                        "t": "`$NUMBER`"
                       },
                       {
-                        "active": true,
-                        "example": -0.1278,
-                        "kind": "query",
-                        "name": "lon",
-                        "orig": "lon",
-                        "reqd": false,
-                        "type": "`$NUMBER`"
+                        "a": true,
+                        "ex": -0.1278,
+                        "k": "query",
+                        "n": "lon",
+                        "or": "lon",
+                        "r": false,
+                        "t": "`$NUMBER`"
                       },
                       {
-                        "active": true,
-                        "example": "json",
-                        "kind": "query",
-                        "name": "mode",
-                        "orig": "mode",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "json",
+                        "k": "query",
+                        "n": "mode",
+                        "or": "mode",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "London,uk",
-                        "kind": "query",
-                        "name": "q",
-                        "orig": "q",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "London,uk",
+                        "k": "query",
+                        "n": "q",
+                        "or": "q",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "standard",
-                        "kind": "query",
-                        "name": "unit",
-                        "orig": "unit",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "standard",
+                        "k": "query",
+                        "n": "unit",
+                        "or": "unit",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "94040,us",
-                        "kind": "query",
-                        "name": "zip",
-                        "orig": "zip",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "94040,us",
+                        "k": "query",
+                        "n": "zip",
+                        "or": "zip",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /weather",
-                    "json": "{\"operationId\":\"getCurrentWeather\",\"parameters\":[{\"description\":\"City name, state code (US only), and country code divided by comma. Use ISO 3166 country codes.\",\"example\":\"London,uk\",\"in\":\"query\",\"name\":\"q\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"City ID. List of city IDs can be downloaded from OpenWeatherMap.\",\"example\":2643743,\"in\":\"query\",\"name\":\"id\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Latitude of the location\",\"example\":51.5074,\"in\":\"query\",\"name\":\"lat\",\"required\":false,\"schema\":{\"format\":\"float\",\"maximum\":90,\"minimum\":-90,\"type\":\"number\"}},{\"description\":\"Longitude of the location\",\"example\":-0.1278,\"in\":\"query\",\"name\":\"lon\",\"required\":false,\"schema\":{\"format\":\"float\",\"maximum\":180,\"minimum\":-180,\"type\":\"number\"}},{\"description\":\"Zip code and country code divided by comma\",\"example\":\"94040,us\",\"in\":\"query\",\"name\":\"zip\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Units of measurement. standard (Kelvin), metric (Celsius), or imperial (Fahrenheit)\",\"in\":\"query\",\"name\":\"units\",\"required\":false,\"schema\":{\"default\":\"standard\",\"enum\":[\"standard\",\"metric\",\"imperial\"],\"type\":\"string\"}},{\"description\":\"Language code for the output. See API documentation for available languages.\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"default\":\"en\",\"type\":\"string\"}},{\"description\":\"Response format. json or xml\",\"in\":\"query\",\"name\":\"mode\",\"required\":false,\"schema\":{\"default\":\"json\",\"enum\":[\"json\",\"xml\"],\"type\":\"string\"}},{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"appid\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"base\":{\"description\":\"Internal parameter\",\"type\":\"string\"},\"clouds\":{\"properties\":{\"all\":{\"description\":\"Cloudiness percentage\",\"type\":\"integer\"}},\"type\":\"object\"},\"cod\":{\"description\":\"Internal parameter\",\"type\":\"integer\"},\"coord\":{\"properties\":{\"lat\":{\"description\":\"Latitude of the location\",\"format\":\"float\",\"type\":\"number\"},\"lon\":{\"description\":\"Longitude of the location\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"dt\":{\"description\":\"Time of data calculation, unix UTC\",\"type\":\"integer\"},\"id\":{\"description\":\"City ID\",\"type\":\"integer\"},\"main\":{\"properties\":{\"feels_like\":{\"description\":\"Temperature accounting for human perception\",\"format\":\"float\",\"type\":\"number\"},\"grnd_level\":{\"description\":\"Atmospheric pressure on the ground level, hPa\",\"type\":\"integer\"},\"humidity\":{\"description\":\"Humidity percentage\",\"type\":\"integer\"},\"pressure\":{\"description\":\"Atmospheric pressure on the sea level, hPa\",\"type\":\"integer\"},\"sea_level\":{\"description\":\"Atmospheric pressure on the sea level, hPa\",\"type\":\"integer\"},\"temp\":{\"description\":\"Temperature\",\"format\":\"float\",\"type\":\"number\"},\"temp_max\":{\"description\":\"Maximum temperature at the moment\",\"format\":\"float\",\"type\":\"number\"},\"temp_min\":{\"description\":\"Minimum temperature at the moment\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"name\":{\"description\":\"City name\",\"type\":\"string\"},\"rain\":{\"properties\":{\"1h\":{\"description\":\"Rain volume for the last 1 hour, mm\",\"format\":\"float\",\"type\":\"number\"},\"3h\":{\"description\":\"Rain volume for the last 3 hours, mm\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"snow\":{\"properties\":{\"1h\":{\"description\":\"Snow volume for the last 1 hour, mm\",\"format\":\"float\",\"type\":\"number\"},\"3h\":{\"description\":\"Snow volume for the last 3 hours, mm\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"sys\":{\"properties\":{\"country\":{\"description\":\"Country code (ISO 3166)\",\"type\":\"string\"},\"id\":{\"description\":\"Internal parameter\",\"type\":\"integer\"},\"sunrise\":{\"description\":\"Sunrise time, unix UTC\",\"type\":\"integer\"},\"sunset\":{\"description\":\"Sunset time, unix UTC\",\"type\":\"integer\"},\"type\":{\"description\":\"Internal parameter\",\"type\":\"integer\"}},\"type\":\"object\"},\"timezone\":{\"description\":\"Shift in seconds from UTC\",\"type\":\"integer\"},\"visibility\":{\"description\":\"Visibility in meters, maximum 10km\",\"type\":\"integer\"},\"weather\":{\"items\":{\"properties\":{\"description\":{\"description\":\"Weather condition within the group\",\"type\":\"string\"},\"icon\":{\"description\":\"Weather icon id\",\"type\":\"string\"},\"id\":{\"description\":\"Weather condition id\",\"type\":\"integer\"},\"main\":{\"description\":\"Group of weather parameters (Rain, Snow, Extreme etc.)\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"wind\":{\"properties\":{\"deg\":{\"description\":\"Wind direction in degrees\",\"type\":\"integer\"},\"gust\":{\"description\":\"Wind gust\",\"format\":\"float\",\"type\":\"number\"},\"speed\":{\"description\":\"Wind speed\",\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with current weather data\"},\"400\":{\"description\":\"Bad request - Invalid parameters\"},\"401\":{\"description\":\"Unauthorized - Invalid API key\"},\"404\":{\"description\":\"Not found - City not found\"},\"429\":{\"description\":\"Too many requests - Rate limit exceeded\"},\"500\":{\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key required for authentication. Obtain from OpenWeatherMap.\",\"in\":\"query\",\"name\":\"appid\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/weather",
-                  "segments": [
-                    {
-                      "lit": "weather"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/weather",
+                  "q": {
                     "exist": [
                       "appid",
                       "id",
@@ -183,7 +247,13 @@
                       "zip"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "weather"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.weather`"
                   }
@@ -612,13 +682,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
